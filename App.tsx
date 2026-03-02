@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import "./global.css";
+import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import QueryProvider from "./app/providers/QueryProvider";
+import RootNavigator from "./app/navigation/RootNavigator";
 
 export default function App() {
+  // TODO: Replace with useAuthStore once Zustand + Supabase are wired up
+  const isAuthenticated = false;
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <QueryProvider>
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        <RootNavigator isAuthenticated={isAuthenticated} />
+      </NavigationContainer>
+    </QueryProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
