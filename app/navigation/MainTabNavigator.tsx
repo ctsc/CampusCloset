@@ -8,6 +8,8 @@ import type {
   FavoritesStackParamList,
   ProfileStackParamList,
 } from "./types";
+import FeedScreen from "../screens/home/FeedScreen";
+import ProfileScreen from "../screens/profile/ProfileScreen";
 import PlaceholderScreen from "../screens/PlaceholderScreen";
 
 // --- Stack navigators for each tab ---
@@ -16,9 +18,11 @@ const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 function HomeNavigator() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Feed" options={{ title: "Home" }}>
-        {() => <PlaceholderScreen name="Feed" />}
-      </HomeStack.Screen>
+      <HomeStack.Screen
+        name="Feed"
+        component={FeedScreen}
+        options={{ title: "Home" }}
+      />
       <HomeStack.Screen name="ListingDetail" options={{ title: "Listing" }}>
         {() => <PlaceholderScreen name="Listing Detail" />}
       </HomeStack.Screen>
@@ -81,9 +85,11 @@ const ProfStack = createNativeStackNavigator<ProfileStackParamList>();
 function ProfileNavigator() {
   return (
     <ProfStack.Navigator>
-      <ProfStack.Screen name="Profile">
-        {() => <PlaceholderScreen name="Profile" />}
-      </ProfStack.Screen>
+      <ProfStack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ title: "Profile" }}
+      />
       <ProfStack.Screen name="EditProfile" options={{ title: "Edit Profile" }}>
         {() => <PlaceholderScreen name="Edit Profile" />}
       </ProfStack.Screen>
