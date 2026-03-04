@@ -9,7 +9,14 @@ import type {
   ProfileStackParamList,
 } from "./types";
 import FeedScreen from "../screens/home/FeedScreen";
+import SearchScreen from "../screens/search/SearchScreen";
+import CreateListingScreen from "../screens/sell/CreateListingScreen";
+import EditListingScreen from "../screens/sell/EditListingScreen";
+import FavoritesScreen from "../screens/favorites/FavoritesScreen";
 import ProfileScreen from "../screens/profile/ProfileScreen";
+import EditProfileScreen from "../screens/profile/EditProfileScreen";
+import ListingDetailScreen from "../screens/listing/ListingDetailScreen";
+import UserProfileScreen from "../screens/profile/UserProfileScreen";
 import PlaceholderScreen from "../screens/PlaceholderScreen";
 
 // --- Stack navigators for each tab ---
@@ -23,12 +30,16 @@ function HomeNavigator() {
         component={FeedScreen}
         options={{ title: "Home" }}
       />
-      <HomeStack.Screen name="ListingDetail" options={{ title: "Listing" }}>
-        {() => <PlaceholderScreen name="Listing Detail" />}
-      </HomeStack.Screen>
-      <HomeStack.Screen name="SellerProfile" options={{ title: "Seller" }}>
-        {() => <PlaceholderScreen name="Seller Profile" />}
-      </HomeStack.Screen>
+      <HomeStack.Screen
+        name="ListingDetail"
+        component={ListingDetailScreen}
+        options={{ title: "Listing" }}
+      />
+      <HomeStack.Screen
+        name="SellerProfile"
+        component={UserProfileScreen}
+        options={{ title: "Seller" }}
+      />
     </HomeStack.Navigator>
   );
 }
@@ -37,15 +48,20 @@ const SearchStack = createNativeStackNavigator<SearchStackParamList>();
 function SearchNavigator() {
   return (
     <SearchStack.Navigator>
-      <SearchStack.Screen name="Search">
-        {() => <PlaceholderScreen name="Search" />}
-      </SearchStack.Screen>
-      <SearchStack.Screen name="ListingDetail" options={{ title: "Listing" }}>
-        {() => <PlaceholderScreen name="Listing Detail" />}
-      </SearchStack.Screen>
-      <SearchStack.Screen name="SellerProfile" options={{ title: "Seller" }}>
-        {() => <PlaceholderScreen name="Seller Profile" />}
-      </SearchStack.Screen>
+      <SearchStack.Screen
+        name="Search"
+        component={SearchScreen}
+      />
+      <SearchStack.Screen
+        name="ListingDetail"
+        component={ListingDetailScreen}
+        options={{ title: "Listing" }}
+      />
+      <SearchStack.Screen
+        name="SellerProfile"
+        component={UserProfileScreen}
+        options={{ title: "Seller" }}
+      />
     </SearchStack.Navigator>
   );
 }
@@ -54,12 +70,16 @@ const SellStack = createNativeStackNavigator<SellStackParamList>();
 function SellNavigator() {
   return (
     <SellStack.Navigator>
-      <SellStack.Screen name="CreateListing" options={{ title: "Sell" }}>
-        {() => <PlaceholderScreen name="Create Listing" />}
-      </SellStack.Screen>
-      <SellStack.Screen name="EditListing" options={{ title: "Edit Listing" }}>
-        {() => <PlaceholderScreen name="Edit Listing" />}
-      </SellStack.Screen>
+      <SellStack.Screen
+        name="CreateListing"
+        component={CreateListingScreen}
+        options={{ title: "Sell" }}
+      />
+      <SellStack.Screen
+        name="EditListing"
+        component={EditListingScreen}
+        options={{ title: "Edit Listing" }}
+      />
     </SellStack.Navigator>
   );
 }
@@ -68,15 +88,20 @@ const FavStack = createNativeStackNavigator<FavoritesStackParamList>();
 function FavoritesNavigator() {
   return (
     <FavStack.Navigator>
-      <FavStack.Screen name="Favorites">
-        {() => <PlaceholderScreen name="Favorites" />}
-      </FavStack.Screen>
-      <FavStack.Screen name="ListingDetail" options={{ title: "Listing" }}>
-        {() => <PlaceholderScreen name="Listing Detail" />}
-      </FavStack.Screen>
-      <FavStack.Screen name="SellerProfile" options={{ title: "Seller" }}>
-        {() => <PlaceholderScreen name="Seller Profile" />}
-      </FavStack.Screen>
+      <FavStack.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+      />
+      <FavStack.Screen
+        name="ListingDetail"
+        component={ListingDetailScreen}
+        options={{ title: "Listing" }}
+      />
+      <FavStack.Screen
+        name="SellerProfile"
+        component={UserProfileScreen}
+        options={{ title: "Seller" }}
+      />
     </FavStack.Navigator>
   );
 }
@@ -90,9 +115,11 @@ function ProfileNavigator() {
         component={ProfileScreen}
         options={{ title: "Profile" }}
       />
-      <ProfStack.Screen name="EditProfile" options={{ title: "Edit Profile" }}>
-        {() => <PlaceholderScreen name="Edit Profile" />}
-      </ProfStack.Screen>
+      <ProfStack.Screen
+        name="EditProfile"
+        component={EditProfileScreen}
+        options={{ title: "Edit Profile" }}
+      />
       <ProfStack.Screen
         name="OrderDetail"
         options={{ title: "Order Detail" }}
